@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<!--Filename: index.html
+    Authors: Isaac Neibaur, Johannes Pikel, Berry Semexan, Akshay Subramanian, Ivan Xa
+	Date: 2017.09.06
+	Class: CS361-400
+	Assignment: Project B
+-->
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>GoodBay Browsing</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!--add jquery for bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default" id="top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#top">GoodBay</a>
+			</div>
+			<div id="navbar">
+				<ul class="nav navbar-nav">
+					<li><a href="/signUpPage">Register</a></li>
+					<li><a href="deleteUser.html">Deactivate User</a></li>
+					<li><a href="/addItemPage">Add an item</a></li>
+					<li><a href="/items">My Items</a></li>
+				</ul>
+
+				<form class="navbar-form navbar-right">
+					<label>Username: </label>
+					<input id="usernameField" type="text"><br>
+					<label>Password:   </label>
+					<input id="passwordField" type="password"><br>
+					<button id="logonbutton" class="btn btn-success">Logon</button>
+					<button id="logoutbutton" class="btn btn-danger" disabled>Logout</button>
+				</form>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+		<!--/.container-fluid -->
+	</nav>
+
+	<div class="jumbotron text-center">
+		<div container></div>
+		<h1 id="welcomeMessage">Welcome to GoodBay!</h1>
+	</div>
+	<div class="container">
+	    <!--this div can be used to add database notification to a single location-->
+		<div id="pageNotifications" class="notifications">Notifications: </div>
+	</div>
+	<div class="container">
+		<fieldset>
+			<legend class="tableLegend" id="recently_added_table_legend">Most recently Donated Items</legend>
+			<table id="recentlyAddedTable">
+			</table>
+		</fieldset>
+	</div>
+
+	<div class="container">
+		<form>
+			<legend class="tableLegend">Search by keyword</legend>
+			<div class="input-group">
+
+				<label class='input-group-addon' id='basic-addon1'>Keyword: </label>
+				<input type="text" name="keyword" id="keywordSearchBox" class="form-control">
+				<span class="input-group-btn">
+					<button id="searchbutton" class="btn btn-success">Search</button>
+				</span>
+				<span class="input-group-btn">
+					<button id="resetsearchbutton" class="btn btn-danger">Reset</button>
+				</span>
+			</div>
+			<div id="searchNotification" class="notifications">Search Message: </div>
+		</form>
+	</div>
+
+
+	<!--<div id="space"></div>-->
+	<div class="container">
+		<legend class="tableLegend" id="full_detail_table_legend">Donated items</legend>
+	</div>
+	<div class="container-full">
+		<table class="itemsTable" id="outputTable">
+			<thead>
+				<tr>
+					<th>Headline</th>
+					<th>Keywords</th>
+					<th>Description</th>
+					<th>Image</th>
+					<th>Date added</th>
+					<th>I want that</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="container">
+		<button id="reviewbutton" class="btn btn-primary">Review Order</button>
+		<button id="checkoutbutton" class="btn btn-success" disabled>Checkout Order</button>
+	</div>
+
+	<div class="container">
+		<div id="checkoutNotification" class="notifications">Message: </div>
+	</div>
+	<div id="space"></div>
+	<!-- this button resets the object_wanted field of all donated items to 0 -->
+	<!-- remove before release -->
+	<!-- <button id="resetItems">ADMIN: Reset All Items in DB to Available</button>-->
+	<script src="script.js"></script>
+</body>
+
+</html>

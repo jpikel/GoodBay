@@ -1,0 +1,61 @@
+<!-- Filename: addItem.handlebars
+    Class: CS361-400
+    Authors: Isaac Neibaur, Johannes Pikel, Berry Semexan, Akshay Subramanian, Ivan Xa
+    Date: 2017.06.09
+    Assignment: Project B
+-->
+
+<nav class="navbar navbar-default" id="top">
+    <div class="navbar header">
+        <a class="navbar-brand" href="index.html">Back</a>
+    </div>
+</nav>
+    <div class="container bg-default">
+        <h2 class="text-center">{{welcomeMessage}}</h2>
+    </div>
+
+    {{#if displayForm}}
+    <div class="container">
+
+        <form ref='uploadForm' id='uploadForm' action='/addItem' method='post' encType="multipart/form-data">
+            <fieldset>
+                <legend class="scheduler-border">
+                    <div class="input-group">
+                        <label class='input-group-addon required-field' id='basic-addon1'>Item Headline</label>
+                        <input class="form-control" aria-describedby="sizing-addon1" type="text" name="headline"  required></input>
+                     </div>
+                     <div class="input-group">
+                        <label class='input-group-addon' id='basic-addon1'>Description</label>
+                        <input class="form-control" type="text" name="descript"></input>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class='input-group-addon required-field' id='basic-addon1'>Keyword 1</label>
+                        <input class="form-control" aria-describedby="sizing-addon1" type="text" name="keyword_1" required></input>
+                    </div>
+                    <div class="input-group">
+                        <label class='input-group-addon required-field' id='basic-addon1'>Keyword 2</label>
+                        <input class="form-control" aria-describedby="sizing-addon1" type="text" name="keyword_2" required></input>
+                    </div>
+                    <div class="input-group">
+                        <label class='input-group-addon required-field' id='basic-addon1' >Keyword 3</label>
+                        <input class="form-control" aria-describedby="sizing-addon1" type="text" name="keyword_3" required></input>
+                    </div>
+                    <div class="input-group">
+                        <label class='input-group-addon' id='basic-addon1' data-toggle="popover">Picture of your item</label>
+                        <input class="form-control" aria-describedby="sizing-addon1" type="file" name="sampleFile" id="fileInputField"/>
+                    </div>
+                    <div id="addFloatHere"></div>
+                    <div style="text-align:center;">
+                        <span class="small" style="text-align:center;">JPEG or PNG, 1MB Max Size</span>
+                    </div>
+                    <div class="input-group">
+                    <input type='submit' value='Upload!' class="btn btn-success"/>
+                    </div>
+                </legend>
+            </fieldset>
+        </form>
+
+    </div>
+    {{/if}}
+    <script src="addItem.js"></script>

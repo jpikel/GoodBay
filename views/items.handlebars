@@ -1,0 +1,143 @@
+<!-- Filename: items.handlebars
+    Class: CS361-400
+    Authors: Isaac Neibaur, Johannes Pikel, Berry Semexan, Akshay Subramanian, Ivan Xa
+    Date: 2017.06.09
+    Assignment: Project B
+-->
+
+
+
+<nav class="navbar navbar-default" id="top">
+	<div class="navbar header">
+		<a class="navbar-brand" href="index.html">Back</a>
+	</div>
+</nav>
+<h2 class="text-center" id="welcomeHeader">{{welcomeMessage}}</h2>
+<div id="pageNotifications" class="notifications">:</div>
+<ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#myDonatedItems">Donated Items</a></li>
+	<li><a data-toggle="tab" href="#myPendingOrders">Pending Ordered Items</a></li>
+	<li><a data-toggle="tab" href="#myReceivedItems">Items Received</a></li>
+	<li><a data-toggle="tab" href="#myShipItems">Items to be Shipped</a></li>
+</ul>
+<div class="tab-content">
+	<div id="myDonatedItems" class="tab-pane fade in active">
+		<legend class="tableLegend" id="donatedItemsTable">Donated items</legend>
+		<table id="outputTable" class="itemsTable">
+			{{#if donatedItems}}
+			<thead>
+				<tr>
+					<th>Headline</th>
+					<th>Keywords</th>
+					<th>Description</th>
+					<th>Image</th>
+					<th>Date added</th>
+				</tr>
+			</thead>
+			{{/if}} {{#if donatedItems}} {{#each donatedItems}}
+			<tr>
+				<td>{{this.headline}}</td>
+				<td>{{this.keyword_1}}, {{this.keyword_2}}, {{this.keyword_3}}</td>
+				<td>{{this.description}}</td>
+				<td><img src="images/{{this.image_name}}" onerror="this.src='images/noimage.png'" class="img-rounded" /></td>
+				<td>{{this.upload_ts}}</td>
+			</tr>
+			{{/each}} {{/if}}
+		</table>
+	</div>
+
+	<div id="myPendingOrders" class="tab-pane fade">
+		<legend class="tableLegend" id="pendingItemsLegend">Pending Orders (Items not received)</legend>
+		<table id="pendingTable" class="itemsTable">
+			{{#if pendingItems}} {{#each pendingItems}}
+			<thead id="orderHeader{{this.item_id}}">
+				<tr>
+					<th>Order: {{this.order_id}}</th>
+					<th colspan='5' id="orderDateHeader{{this.item_id}}">Order Date: {{this.dateOrdered}}</th>
+				</tr>
+			</thead>
+			<tr id="itemHeader{{this.item_id}}">
+				<th>Headline</th>
+				<th>Keywords</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th id="dateHeaderToChange{{this.item_id}}">Date added</th>
+				<th id="pendingItemReceivedHeader{{this.item_id}}">Item received</th>
+			</tr>
+			<tr id="row{{this.item_id}}">
+				<td>{{this.headline}}</td>
+				<td>{{this.keyword_1}}, {{this.keyword_2}}, {{this.keyword_3}}</td>
+				<td>{{this.description}}</td>
+				<td><img src="images/{{this.image_name}}" onerror="this.src='images/noimage.png'" class="img-rounded" /></td>
+				<td id="dateToChangeOnReceived{{this.item_id}}">{{this.upload_ts}}</td>
+				<td id="buttonCell{{this.item_id}}">
+					<button id={{this.item_id}} class="received">Received</button></td>
+
+			</tr>
+			{{/each}} {{/if}}
+		</table>
+	</div>
+
+	<div id="myReceivedItems" class="tab-pane fade">
+		<legend class="tableLegend" id="receivedItemsLegend">Completed Orders</legend>
+		<table id="receivedItemsTable" class="itemsTable">
+			{{#if receivedItems}} {{#each receivedItems}}
+			<thead id="orderHeader{{this.item_id}}">
+				<tr>
+					<th>Order: {{this.order_id}}</th>
+					<th colspan='4'>Order Date: {{this.dateOrdered}}</th>
+				</tr>
+			</thead>
+			<tr id="itemHeader{{this.item_id}}">
+				<th>Headline</th>
+				<th>Keywords</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Date received</th>
+			</tr>
+			<!-- by setting the item_id as the row id we can find the row we need to remove once we click the button-->
+			<tr id="row{{this.item_id}}">
+				<td>{{this.headline}}</td>
+				<td>{{this.keyword_1}}, {{this.keyword_2}}, {{this.keyword_3}}</td>
+				<td>{{this.description}}</td>
+				<td><img src="images/{{this.image_name}}" onerror="this.src='images/noimage.png'" class="img-rounded" /></td>
+				<td>{{this.dateReceived}}</td>
+			</tr>
+			{{/each}} {{/if}}
+		</table>
+	</div>
+	<div id="myShipItems" class="tab-pane fade">
+		<legend class="tableLegend" id="shipItemsTable">Items to be shipped</legend>
+		<table id="shipItemsTable" class="itemsTable">
+			{{#if shipItems}}
+			<thead>
+				<tr>
+					<th>Headline</th>
+					<th>Date Ordered</th>
+					<th>Customer</th>
+					<th>Address</th>
+					<th>Ship it with USPS</th>
+				</tr>
+			</thead>
+			{{/if}}
+			{{#if shipItems}} 
+				{{#each shipItems}}
+				<tr>
+					<td>{{this.headline}}</td>
+					<td>{{this.dateOrdered}}</td>
+					<td>{{this.username}}</td>
+					<td>{{this.street_num}} {{this.street_name}}, {{this.city}} <br> {{this.state}}, {{this.zipcode}}</td>
+					<td><button id="{{this.item_id}}">get USPS shipping label</button></td>
+				</tr>
+				{{/each}} 
+			{{/if}}
+		</table>
+	</div>
+</div>
+
+
+
+<!-- does this work? -->
+
+
+<script src="deletePendingItem.js"></script>
