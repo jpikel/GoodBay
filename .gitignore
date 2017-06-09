@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# do not import the dbcon.js the user/pass is different from development to release 
+dbcon.js
