@@ -26,7 +26,7 @@ app.use(cookieParser());
 //session storage
 var session = require('express-session');
 app.use(session({
-	secret:'SuperSecretPassword',
+	secret:'',
 	resave:true,
 	saveUninitialized:true
 }));
