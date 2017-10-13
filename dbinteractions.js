@@ -41,8 +41,8 @@ let transporter = nodemailer.createTransport({
 		rejectUnauthorized: false
 	},
 	auth: {
-		user: 'pikelj@oregonstate.edu',
-		pass: 'gG2PHXjb6CJqeW'
+		user: 'THISNEEDSYOURUSER',
+		pass: 'THISNEEDSYOURPASS'
 	},
 });
 
